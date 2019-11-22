@@ -128,75 +128,39 @@ void display(void)
 			glVertex3f(0.3 + 0.01 * i, -(0.3 + 0.01 * i) * (0.3 + 0.01 * i) + 3.008 * (0.3 + 0.01 * i), 0.5);
 		}
 		glEnd();
-		if (phase == 1 && (flash_count / 3) % 2)
+		if (phase == 1)
 		{
 			glLineWidth(3);
-			glBegin(GL_LINES);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1) - 0.05,
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)),
-					   0.5);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1) - 0.25,
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)),
-					   0.5);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1) + 0.05,
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)),
-					   0.5);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1) + 0.25,
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)),
-					   0.5);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1),
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)) - 0.05,
-					   0.5);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1),
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)) - 0.25,
-					   0.5);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1),
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)) + 0.05,
-					   0.5);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1),
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)) + 0.25,
-					   0.5);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1) - 0.05,
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)) + 0.05,
-					   0.5);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1) - 0.25,
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)) + 0.25,
-					   0.5);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1) + 0.05,
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)) - 0.05,
-					   0.5);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1) + 0.25,
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)) - 0.25,
-					   0.5);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1) - 0.05,
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)) - 0.05,
-					   0.5);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1) - 0.25,
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)) - 0.25,
-					   0.5);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1) + 0.05,
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)) + 0.05,
-					   0.5);
-			glVertex3f(0.3 + 0.01 * (powderhose_len - 1) + 0.25,
-					   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
-						   3.008 * (0.3 + 0.01 * (powderhose_len - 1)) + 0.25,
-					   0.5);
-			glEnd();
+			glColor3f(1.0, 1.0, 0.0);
+			for (int i = 0; i < 80; i++)
+			{
+				GLfloat pos_x;
+				GLfloat pos_y;
+				GLfloat pos_z;
+				do
+				{
+					pos_x = fmod(rand() / 100000.0, 0.4) - 0.2;
+					pos_y = fmod(rand() / 100000.0, 0.4) - 0.2;
+					pos_z = fmod(rand() / 100000.0, 0.4) - 0.2;
+				} while (pos_x * pos_x + pos_y * pos_y + pos_z * pos_z > 0.2 * 0.2);
+				glBegin(GL_POLYGON);
+				glVertex3f(0.3 + 0.01 * (powderhose_len - 1) + pos_x + fmod(rand() / 100000.0, 0.02) - 0.01,
+						   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
+							   3.008 * (0.3 + 0.01 * (powderhose_len - 1)) + pos_y + fmod(rand() / 100000.0, 0.02) -
+							   0.01,
+						   0.5 + pos_z + fmod(rand() / 100000.0, 0.02) - 0.01);
+				glVertex3f(0.3 + 0.01 * (powderhose_len - 1) + pos_x + fmod(rand() / 100000.0, 0.02) - 0.01,
+						   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
+							   3.008 * (0.3 + 0.01 * (powderhose_len - 1)) + pos_y + fmod(rand() / 100000.0, 0.02) -
+							   0.01,
+						   0.5 + pos_z + fmod(rand() / 100000.0, 0.02) - 0.01);
+				glVertex3f(0.3 + 0.01 * (powderhose_len - 1) + pos_x + fmod(rand() / 100000.0, 0.02) - 0.01,
+						   -(0.3 + 0.01 * (powderhose_len - 1)) * (0.3 + 0.01 * (powderhose_len - 1)) +
+							   3.008 * (0.3 + 0.01 * (powderhose_len - 1)) + pos_y + fmod(rand() / 100000.0, 0.02) -
+							   0.01,
+						   0.5 + pos_z + fmod(rand() / 100000.0, 0.02) - 0.01);
+				glEnd();
+			}
 		}
 	}
 	else
