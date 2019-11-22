@@ -20,14 +20,14 @@
   * 第三阶段：当引信末端触及到炸弹表面时进入第三阶段。此阶段炸弹炸开，散成许多彩色纸屑四处飞扬。
 * 炸弹模型是一个黑色球体。
 
-![](/home/traceback/Code/CG_2019_Assignment3/assets/phase_1.png)
+![](./assets/phase_1.png)
 
 * 炸弹引信是由一系列短线段组成的近似二次函数曲线，当引信被点燃后，每次绘制的线段数会相应减少，以此实现引信缩短的效果。
 * 炸弹引信的火花是充斥一定数目的随机小三角面片的球形空间。火花所在球体的球心被放置了一个点光源，可以照亮炸弹表面。
 
-![](/home/traceback/Code/CG_2019_Assignment3/assets/phase_2_1.png)
+![](./assets/phase_2_1.png)
 
-![](/home/traceback/Code/CG_2019_Assignment3/assets/phase_2_2.png)
+![](./assets/phase_2_2.png)
 
 * 炸弹爆炸后，会产生大量的彩色三角形面片。这些面片的位置和颜色都是随机数。面片的初始位置被限定在炸弹所处的空间内。
 * 炸弹爆炸后的彩色三角形面片的运动由两部分组成：
@@ -38,9 +38,9 @@
   * 当u衰减到一个常数A时：f(u, t) = A^t, v = f'(u, t)。
   * 向下坠落的自由落体运动：此部分的运动就是自由落体运动，是向下加速的匀加速运动。但是当速度增加到一个上限时，会转变为匀速直线运动。
 
-![](/home/traceback/Code/CG_2019_Assignment3/assets/phase_3_1.png)
+![](./assets/phase_3_1.png)
 
-![](/home/traceback/Code/CG_2019_Assignment3/assets/phase_3_2.png)
+![](./assets/phase_3_2.png)
 
 ## 3. 键盘或鼠标操作
 
