@@ -7,10 +7,25 @@
 
 #define WINDOW_WIDTH 1600
 #define WINDOW_HEIGHT 900
+#define N_SLICES 5000
 
 int phase = 0;
 int flash_count = 0;
 int powderhose_len = 200;
+struct
+{
+	GLfloat pos_x;
+	GLfloat pos_y;
+	GLfloat pos_z;
+} slices_pos[N_SLICES];
+struct
+{
+	GLfloat r;
+	GLfloat g;
+	GLfloat b;
+} slices_color[N_SLICES];
+GLfloat spread_speed = 1.08;
+GLfloat fall_speed = 0.000001;
 
 void init();
 void display();
@@ -50,6 +65,25 @@ void init()
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_DEPTH_TEST);
+	srand(time(NULL));
+	for (int i = 0; i < N_SLICES; i++)
+	{
+		GLfloat x;
+		GLfloat y;
+		GLfloat z;
+		do
+		{
+			x = fmod(rand() / 100000.0, 2) - 1;
+			y = fmod(rand() / 100000.0, 2) - 1;
+			z = fmod(rand() / 100000.0, 2) - 1;
+		} while (x * x + y * y + z * z > 1);
+		slices_pos[i].pos_x = x;
+		slices_pos[i].pos_y = y;
+		slices_pos[i].pos_z = z;
+		slices_color[i].r = fmod(rand() / 100000.0, 1);
+		slices_color[i].g = fmod(rand() / 100000.0, 1);
+		slices_color[i].b = fmod(rand() / 100000.0, 1);
+	}
 }
 
 void display(void)
@@ -167,26 +201,35 @@ void display(void)
 	}
 	else
 	{
-		if (flash_count < 200)
+		for (int i = 0; i < N_SLICES; i++)
 		{
-		//	glClearColor((flash_count / 5) % 2 ? 0.1 : 1.0, (flash_count / 5) % 2 ? 0.0 : 1.0, (flash_count / 5) % 2 ? 0.2 : 0.5, 0.0);
-			glClearColor((flash_count / 5) % 2 ? 1.0 : 1.0, (flash_count / 5) % 2 ? 1.0 : 1.0, (flash_count / 5) % 2 ? 1.0 : 0.5, 0.0);
-			flash_count++;
-		}
-		else
-		{
-			srand(time(NULL));
-			GLfloat pos_x = fmod(rand(), 5);
-			GLfloat pos_y = fmod(rand(), 5);
-			GLfloat pos_z = fmod(rand(), 5);
+			if (spread_speed > 1.01)
+			{
+				spread_speed -= 0.0000004;
+			}
+			if (fall_speed < 0.05)
+			{
+				fall_speed += 0.00000005;
+			}
+			slices_pos[i].pos_x *= spread_speed;
+			slices_pos[i].pos_y *= spread_speed;
+			slices_pos[i].pos_z *= spread_speed;
+			slices_pos[i].pos_y -= fall_speed;
 			glBegin(GL_POLYGON);
-			glVertex3f(pos_x, pos_y, pos_z);
-			glVertex3f(pos_x + 0.2, pos_y + 0.2, pos_z);
-			glVertex3f(pos_x, pos_y + 0.2, pos_z + 0.2);
-			glVertex3f(pos_x + 0.2, pos_y, pos_z);
+			glColor3f(0, slices_color[i].g, slices_color[i].b);
+			glVertex3f(slices_pos[i].pos_x + fmod(rand() / 100000.0, 0.2) - 0.1,
+					   slices_pos[i].pos_y + fmod(rand() / 100000.0, 0.2) - 0.1,
+					   slices_pos[i].pos_z + fmod(rand() / 100000.0, 0.2) - 0.1);
+			glColor3f(slices_color[i].r, 0, slices_color[i].b);
+			glVertex3f(slices_pos[i].pos_x + fmod(rand() / 100000.0, 0.2) - 0.1,
+					   slices_pos[i].pos_y + fmod(rand() / 100000.0, 0.2) - 0.1,
+					   slices_pos[i].pos_z + fmod(rand() / 100000.0, 0.2) - 0.1);
+			glColor3f(slices_color[i].r, slices_color[i].g, 0);
+			glVertex3f(slices_pos[i].pos_x + fmod(rand() / 100000.0, 0.2) - 0.1,
+					   slices_pos[i].pos_y + fmod(rand() / 100000.0, 0.2) - 0.1,
+					   slices_pos[i].pos_z + fmod(rand() / 100000.0, 0.2) - 0.1);
 			glEnd();
 		}
-
 	}
 	glutSwapBuffers();
 }
